@@ -9,11 +9,10 @@ namespace SchoolManager
     public class Student : Person
     {
         public int Age { get; set; }
-        
-        public Student(string name, string phone, int age, int classID, EventType eventType) : base(name, phone, eventType, classID)
+
+        public Student(string name, string phone, int age, int classID, int id) : base(name, phone, classID, id)
         {
             Age = age;
-
         }
     }
 }

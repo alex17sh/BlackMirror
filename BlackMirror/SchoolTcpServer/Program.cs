@@ -14,16 +14,13 @@ namespace SchoolTcpServer
     {
         const int Port = 9700;
         const string IP = "127.0.0.1";
-
         private static School s_SchoolManager = new School();
 
         static void Main(string[] args)
         {
             IPAddress localAdd = IPAddress.Parse(IP);
             TcpListener listener = new TcpListener(localAdd, Port);
-            Console.WriteLine("Listening...");
             listener.Start();
-
 
             while (true)
             {
@@ -44,44 +41,8 @@ namespace SchoolTcpServer
                     string payload = Encoding.ASCII.GetString(reader.ReadBytes(size));
                     string[] commandArgs = payload.Split('\0');
 
-                    string res;
-                    switch (op)
-                    {
-                        case 0x01:
-                            res = s_SchoolManager.AddStudent(commandArgs[0], commandArgs[1], int.Parse(commandArgs[2]), int.Parse(commandArgs[3]));
-                            break;
-                        case 0x02:
-                            res = s_SchoolManager.AddTeacher(commandArgs[0], commandArgs[1], int.Parse(commandArgs[2]));
-                            break;
-                        case 0x03:
-                            res = s_SchoolManager.EnterClass(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
-                            break;
-                        case 0x04:
-                            res = s_SchoolManager.ExitClass(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
-                            break;
-                        case 0x05:
-                            res = s_SchoolManager.Eating(int.Parse(commandArgs[0]));
-                            break;
-                        case 0x06:
-                            res = s_SchoolManager.Chat(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
-                            break;
-                        case 0xA0:
-                            res = s_SchoolManager.GetStudent();
-                            break;
-                        case 0xA1:
-                            res = s_SchoolManager.GetTeachers();
-                            break;
-                        case 0xA2:
-                            res = s_SchoolManager.WhoAte();
-                            break;
-                        case 0xA3:
-                            res = s_SchoolManager.ClassPresence();
-                            break;
-                        default:
-                            res = "-1wrong command";
-                            break;
-                    }
-                    
+                    string res = HandleCommand(op, commandArgs);
+
                     //---write back the text to the client---
                     byte[] bytesToSend = Encoding.ASCII.GetBytes(res);
                     nwStream.Write(bytesToSend, 0, bytesToSend.Length);
@@ -96,6 +57,35 @@ namespace SchoolTcpServer
             
             listener.Stop();
 
+        }
+
+        private static string HandleCommand(byte op, string[] commandArgs)
+        {
+            switch (op)
+            {
+                case 0x01:
+                    return s_SchoolManager.AddStudent(commandArgs[0], commandArgs[1], int.Parse(commandArgs[2]), int.Parse(commandArgs[3]));                    
+                case 0x02:
+                    return s_SchoolManager.AddTeacher(commandArgs[0], commandArgs[1], int.Parse(commandArgs[2]));
+                case 0x03:
+                    return s_SchoolManager.EnterClass(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
+                case 0x04:
+                    return s_SchoolManager.ExitClass(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
+                case 0x05:
+                    return s_SchoolManager.Eating(int.Parse(commandArgs[0]));
+                case 0x06:
+                    return s_SchoolManager.Chat(int.Parse(commandArgs[0]), int.Parse(commandArgs[1]));
+                case 0xA0:
+                    return s_SchoolManager.GetStudent();
+                case 0xA1:
+                    return s_SchoolManager.GetTeachers();
+                case 0xA2:
+                    return s_SchoolManager.WhoAte();
+                case 0xA3:
+                    return s_SchoolManager.ClassPresence();
+                default:
+                    return "-1wrong command";
+            }
         }
     }
 }

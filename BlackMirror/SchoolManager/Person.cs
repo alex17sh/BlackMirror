@@ -14,12 +14,13 @@ namespace SchoolManager
         public int ID { get; set; }
         public int ClassID { get; set; }
 
-        protected Person(string name, string phone, EventType eventType,int classID)
+        protected Person(string name, string phone,int classID, int id)
         {
             Name = name;
             Phone = phone;
             ClassID = classID;
-            SchoolEvents = new List<Event> { new Event { EventOfType = eventType } };
+            SchoolEvents = new List<Event>();
+            ID = id;
         }
     }
 }

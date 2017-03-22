@@ -35,7 +35,7 @@ namespace SchoolManager
             int id = Interlocked.Increment(ref m_LastId);
             currentClass.StudentsIDs.Add(id);
 
-            Student student = new Student(name, phone, age, classID, EventType.Enter); ;
+            Student student = new Student(name, phone, age, classID, id); ;
             m_Students.Add(student);
             return id.ToString();
         }
@@ -46,7 +46,7 @@ namespace SchoolManager
             int id = Interlocked.Increment(ref m_LastId);
 
             //TODO: check if can add teacher to class?
-            Teacher teacher = new Teacher(name, phone, classID, EventType.Enter);
+            Teacher teacher = new Teacher(name, phone, classID, id);
             m_Teachers.Add(teacher);
             return id.ToString();
         }
@@ -69,7 +69,7 @@ namespace SchoolManager
             {
                 return "-1cant exit class";
             }
-            currentClass.ClassEvents.Add(new ClassEvent { EventExecutorID = studentID, EventOfType = EventType.Enter });
+            currentClass.ClassEvents.Add(new ClassEvent { EventExecutorID = studentID, EventOfType = EventType.Exit });
             return "OK";
         }
 

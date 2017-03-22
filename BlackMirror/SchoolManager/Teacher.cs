@@ -10,7 +10,7 @@ namespace SchoolManager
     {
         
 
-        public Teacher(string name, string phone, int classID, EventType eventType) : base(name, phone, eventType, classID)
+        public Teacher(string name, string phone, int classID, int id) : base(name, phone, classID, id)
         {
         }
     }

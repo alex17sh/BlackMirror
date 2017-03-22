@@ -23,7 +23,7 @@ namespace BlackMirror
 
             int req = 2000;
             byte op = 0xA3;
-            string payload = "name\0cell phone\0age\08";
+            string payload = "1\05";
             byte[] payloadBytes = ASCIIEncoding.ASCII.GetBytes(payload);
             int size = payloadBytes.Length;
 

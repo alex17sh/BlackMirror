@@ -11,6 +11,7 @@ namespace SchoolManager
     {
         private const int NumberOfClasses = 8;
         private const int MaxStudentsInClass = 5;
+        private const int NumberOfMinutesLastAte = 60;
         private int m_LastId = 0;
 
         private List<Class> m_Classes = new List<Class>(NumberOfClasses);
@@ -114,7 +115,7 @@ namespace SchoolManager
         public string WhoAte()
         {
             string res = string.Empty;
-            m_Students.Where(s => s.SchoolEvents.Any(e => e.EventOfType == EventType.Eat && (DateTime.Now - e.EventTime).TotalMinutes <= 60)).ToList().
+            m_Students.Where(s => s.SchoolEvents.Any(e => e.EventOfType == EventType.Eat && (DateTime.Now - e.EventTime).TotalMinutes <= NumberOfMinutesLastAte)).ToList().
                 ForEach(s => res += string.Format("{0} {1}\n", s.ID, s.Name));
             return res;
         }

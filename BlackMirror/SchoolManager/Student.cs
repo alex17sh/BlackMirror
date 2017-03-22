@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManager
 {
-    public class Student
+    public class Student : Person
     {
         public int Age { get; set; }
     }

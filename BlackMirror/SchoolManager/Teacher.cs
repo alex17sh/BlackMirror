@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolManager
 {
-    public class Teacher
+    public class Teacher : Person
     {
-        public List<int> Classes { get; set; }
+        public int ClassID { get; set; }
     }
 }

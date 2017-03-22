@@ -10,6 +10,7 @@ namespace SchoolManager
     {
         public string Name { get; set; }
         public string Phone { get; set; }
-        public List<Event> Events { get; set; }
+        public List<Event> SchoolEvents { get; set; }
+        public int ID { get; set; }
     }
 }

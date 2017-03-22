@@ -4,3 +4,9 @@ c:\users\user\documents\visual studio 2017\Projects\BlackMirror\BlackMirror\bin\
 c:\users\user\documents\visual studio 2017\Projects\BlackMirror\BlackMirror\obj\Debug\BlackMirror.csprojResolveAssemblyReference.cache
 c:\users\user\documents\visual studio 2017\Projects\BlackMirror\BlackMirror\obj\Debug\BlackMirror.exe
 c:\users\user\documents\visual studio 2017\Projects\BlackMirror\BlackMirror\obj\Debug\BlackMirror.pdb
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\bin\Debug\BlackMirror.exe.config
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\bin\Debug\BlackMirror.exe
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\bin\Debug\BlackMirror.pdb
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\obj\Debug\BlackMirror.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\obj\Debug\BlackMirror.exe
+C:\Users\user\Documents\Git\BlackMirror\BlackMirror\obj\Debug\BlackMirror.pdb

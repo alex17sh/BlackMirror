@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackMirror
+namespace SchoolManager
 {
-    class Program
+    public class Student
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        public int Age { get; set; }
     }
 }

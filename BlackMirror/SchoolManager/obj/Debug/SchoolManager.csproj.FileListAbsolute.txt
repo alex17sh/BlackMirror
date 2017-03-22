@@ -1,0 +1,5 @@
+C:\Users\user\Documents\Git\BlackMirror\SchoolManager\bin\Debug\SchoolManager.dll
+C:\Users\user\Documents\Git\BlackMirror\SchoolManager\bin\Debug\SchoolManager.pdb
+C:\Users\user\Documents\Git\BlackMirror\SchoolManager\obj\Debug\SchoolManager.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Git\BlackMirror\SchoolManager\obj\Debug\SchoolManager.dll
+C:\Users\user\Documents\Git\BlackMirror\SchoolManager\obj\Debug\SchoolManager.pdb

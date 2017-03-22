@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace SchoolManager
 {
-    public class Teacher : Person
+    public class ClassEvent : Event
     {
-        
+        public int EventExecutorID { get; set; }
 
-        public Teacher(string name, string phone, int classID, EventType eventType) : base(name, phone, eventType, classID)
+        public ClassEvent() : base()
         {
+
         }
     }
 }

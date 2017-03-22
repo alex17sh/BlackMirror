@@ -21,7 +21,7 @@ namespace SchoolManager
         {
             for (int i = 0; i < NumberOfClasses; i++)
             {
-                m_Classes[i] = new Class { ID = i, StudentsIDs = new List<int>() };
+                m_Classes.Add(new Class(i));
             }
         }
 
@@ -35,7 +35,7 @@ namespace SchoolManager
             int id = Interlocked.Increment(ref m_LastId);
             currentClass.StudentsIDs.Add(id);
 
-            Student student = new Student { Age = age, Name = name, Phone = phone, ID = id, SchoolEvents = new List<Event>() };
+            Student student = new Student(name, phone, age, classID, EventType.Enter); ;
             m_Students.Add(student);
             return id.ToString();
         }
@@ -46,31 +46,30 @@ namespace SchoolManager
             int id = Interlocked.Increment(ref m_LastId);
 
             //TODO: check if can add teacher to class?
-            Teacher teacher = new Teacher { Name = name, Phone = phone, ID = id, SchoolEvents = new List<Event>() { new Event { EventOfType = EventType.Enter } } };
+            Teacher teacher = new Teacher(name, phone, classID, EventType.Enter);
             m_Teachers.Add(teacher);
             return id.ToString();
         }
 
         public string EnterClass(int studentID, int classID)
         {
-            Class currentClass = GetValidClass(classID);
+            Class currentClass = m_Classes.FirstOrDefault(c => c.ID == classID);
             if (currentClass == null)
             {
                 return "-1cant enter class";
             }
-            //TODO: check if can add student to class?
-            currentClass.StudentsIDs.Add(studentID);
+            currentClass.ClassEvents.Add(new ClassEvent { EventExecutorID = studentID, EventOfType = EventType.Enter });
             return "OK";
         }
 
         public string ExitClass(int studentID, int classID)
         {
-            Class currentClass = GetValidClass(classID);
+            Class currentClass = m_Classes.FirstOrDefault(c => c.ID == classID);
             if (currentClass == null)
             {
                 return "-1cant exit class";
             }
-            currentClass.StudentsIDs.Remove(studentID);
+            currentClass.ClassEvents.Add(new ClassEvent { EventExecutorID = studentID, EventOfType = EventType.Enter });
             return "OK";
         }
 
@@ -96,6 +95,48 @@ namespace SchoolManager
             student1.SchoolEvents.Add(new Event { EventOfType = EventType.Chat });
             student2.SchoolEvents.Add(new Event { EventOfType = EventType.Chat });
             return "OK";
+        }
+
+        public string GetStudent()
+        {
+            string res = string.Empty;
+            m_Students.ForEach(s => res += string.Format("{0} {1} {2}\n", s.ID, s.Name, s.Age));
+            return res;
+        }
+
+        public string GetTeachers()
+        {
+            string res = string.Empty;
+            m_Teachers.ForEach(s => res += string.Format("{0} {1} {2}\n", s.ID, s.Name, s.ClassID));
+            return res;
+        }
+
+        public string WhoAte()
+        {
+            string res = string.Empty;
+            m_Students.Where(s => s.SchoolEvents.Any(e => e.EventOfType == EventType.Eat && (DateTime.Now - e.EventTime).TotalMinutes <= 60)).ToList().
+                ForEach(s => res += string.Format("{0} {1}\n", s.ID, s.Name));
+            return res;
+        }
+
+        public string ClassPresence()
+        {
+            string res = string.Empty;
+            m_Classes.ForEach(c =>
+            {
+                c.ClassEvents.Where(e => e.EventOfType == EventType.Enter).ToList().ForEach(enterEvent =>
+                {
+                    res += string.Format("{0} {1} {2} {3}\n", enterEvent.EventExecutorID, c.ID, enterEvent.EventTime, GetExitTime(c.ClassEvents, enterEvent));
+                });
+            });
+            return res;
+        }
+
+        private DateTime GetExitTime(List<ClassEvent> classEvents, ClassEvent enterEvent)
+        {
+            ClassEvent firstExitEvent = classEvents.OrderBy(e => e.EventTime).
+                FirstOrDefault(e => e.EventExecutorID == enterEvent.EventExecutorID && e.EventTime > enterEvent.EventTime && e.EventOfType == EventType.Exit);
+            return firstExitEvent != null ? firstExitEvent.EventTime : new DateTime();
         }
 
         private Class GetValidClass(int classID)

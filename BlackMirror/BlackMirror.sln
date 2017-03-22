@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMirror", "BlackMirror\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManager", "SchoolManager\SchoolManager.csproj", "{4E5822D2-0DE8-485A-9FFF-385437A572A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolTcpServer", "SchoolTcpServer\SchoolTcpServer.csproj", "{D41B4513-0220-49EE-888F-44263297CD50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4E5822D2-0DE8-485A-9FFF-385437A572A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E5822D2-0DE8-485A-9FFF-385437A572A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E5822D2-0DE8-485A-9FFF-385437A572A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41B4513-0220-49EE-888F-44263297CD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41B4513-0220-49EE-888F-44263297CD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41B4513-0220-49EE-888F-44263297CD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41B4513-0220-49EE-888F-44263297CD50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

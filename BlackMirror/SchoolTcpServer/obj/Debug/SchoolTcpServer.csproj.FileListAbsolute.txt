@@ -1,0 +1,8 @@
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\bin\Debug\SchoolTcpServer.exe.config
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\bin\Debug\SchoolTcpServer.exe
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\bin\Debug\SchoolTcpServer.pdb
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\bin\Debug\SchoolManager.dll
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\bin\Debug\SchoolManager.pdb
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\obj\Debug\SchoolTcpServer.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\obj\Debug\SchoolTcpServer.exe
+C:\Users\user\Documents\Git\BlackMirror\SchoolTcpServer\obj\Debug\SchoolTcpServer.pdb
